@@ -21,10 +21,10 @@ const ContactForm = ({ onSubmit }) => {
 
     const handleChange = ({ target }) => {
         const { name, value } = target;
-        setState(prevState => ({
-            ...prevState,
+        setState({
+            ...state,
             [name]: value
-        }))
+        })
     };
 
     const { name, number } = state;
