@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './contact-form.module.scss';
@@ -12,7 +12,7 @@ const ContactForm = ({ onSubmit }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmit({...state});
+        onSubmit(state);
         setState({
             name: '',
             number: '',
@@ -21,10 +21,10 @@ const ContactForm = ({ onSubmit }) => {
 
     const handleChange = ({ target }) => {
         const { name, value } = target;
-        setState({
-            ...state,
+        setState(prevState => ({
+            ...prevState,
             [name]: value
-        })
+        }))
     };
 
     const { name, number } = state;
@@ -66,4 +66,4 @@ ContactForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
 };
 
-export default ContactForm;
+export default memo(ContactForm);
