@@ -44,7 +44,7 @@ const Phonebook = () => {
         return filteredContacts;
     };
 
-    const filteredContacts = getFilteredContacts(filter, contacts);
+    const filteredContacts = getFilteredContacts();
 
     return (
         <div className={styles.container}>
